@@ -1,9 +1,9 @@
 import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("jvm") version "1.9.20"
     id("io.gitlab.arturbosch.detekt").version("1.23.3")
-    id("com.google.devtools.ksp").version("1.9.10-1.0.13")
+    id("com.google.devtools.ksp").version("1.9.20-1.0.13")
     application
 }
 
