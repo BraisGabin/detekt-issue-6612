@@ -3,6 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 plugins {
     kotlin("jvm") version "1.9.10"
     id("io.gitlab.arturbosch.detekt").version("1.23.3")
+    id("com.google.devtools.ksp").version("1.9.10-1.0.13")
     application
 }
 
@@ -14,6 +15,9 @@ repositories {
 }
 
 dependencies {
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+
     testImplementation(kotlin("test"))
 }
 
@@ -31,4 +35,11 @@ application {
 
 tasks.withType<Detekt>().configureEach {
     jvmTarget = "11"
+
+    doFirst {
+        this as Detekt
+        println("@@@@@@@@@@@@@@")
+        this.source.visit { println(this) }
+        println("@@@@@@@@@@@@@@")
+    }
 }
